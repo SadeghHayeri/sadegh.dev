@@ -1,0 +1,271 @@
+/* ------------------------------------------------------------------
+   Tokens
+   ------------------------------------------------------------------ */
+
+:root {
+  /* Colour. One ground, three inks, two rules, a grey for the timeline
+     bars, and a single signal colour for what is running right now. */
+  --bg: #000;
+  --ink: #ecebe6;
+  --ink-2: #a9a7a1;
+  --ink-3: #7c7a75;
+  --rule: #1d1d1b;
+  --rule-2: #3b3a37;
+  --bar: #6b6964;
+  --live: #4fd9c6;
+
+  /* Type */
+  --font-display: var(--font-funnel-display), ui-sans-serif, system-ui,
+    sans-serif;
+  --font-text: var(--font-funnel-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --step--1: 0.8125rem; /* 13 */
+  --step-0: 0.9375rem; /* 15 */
+  --step-1: 1.0625rem; /* 17 */
+  --step-2: clamp(1.1875rem, 1.1rem + 0.4vw, 1.375rem); /* 19 → 22 */
+  --step-3: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem); /* 28 → 40 */
+  --step-4: clamp(2.375rem, 1.2rem + 5vw, 4.5rem); /* 38 → 72 */
+
+  /* Space and layout */
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --page: 78rem;
+  --gap: clamp(1.5rem, 3vw, 2.5rem);
+  /* Share of the row given to the left rail on wide screens. */
+  --rail: 0.25;
+  --section: clamp(6rem, 13vw, 11rem);
+  --measure: 36rem;
+  /* Label column shared by the small tables (projects, toolbox). */
+  --label: 13rem;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Lets <details> animate to its natural height where supported. */
+  interpolate-size: allow-keywords;
+}
+
+/* ------------------------------------------------------------------
+   Reset
+   ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark;
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Sections carry their spacing as padding above the title. Jumping to one
+   from the menu should land on the title, not on that empty space. */
+section[id] {
+  scroll-margin-top: calc(3rem - var(--section));
+}
+
+#top {
+  scroll-margin-top: 100vh;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink-2);
+  font-family: var(--font-text);
+  font-size: var(--step-1);
+  line-height: 1.6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+svg {
+  display: block;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--live) 32%, transparent);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------------
+   Shared pieces
+   ------------------------------------------------------------------ */
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--page) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* The page's one structural idea: a narrow rail on the left, content on
+   the right. Every section, the hero intro and each row of the work
+   timeline share these columns, so their left edges line up. */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 56rem) {
+  .split {
+    grid-template-columns:
+      calc((100% - var(--gap)) * var(--rail))
+      minmax(0, 1fr);
+    column-gap: var(--gap);
+  }
+}
+
+/* Text links: ivory, with a quiet underline that firms up on hover. */
+.link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-2);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.link:hover {
+  text-decoration-color: currentColor;
+}
+
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: 0.75rem;
+  z-index: 10;
+  padding: 0.5rem 0.875rem;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 4px;
+  font-size: var(--step-0);
+  transform: translateY(-300%);
+}
+
+.skip:focus {
+  transform: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------
+   Not-found page
+   ------------------------------------------------------------------ */
+
+.missing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100dvh;
+  padding-block: 4rem;
+}
+
+.missing h1 {
+  margin-top: 2.5rem;
+  font-size: var(--step-4);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+}
+
+.missing p {
+  margin-block: 1.25rem 2rem;
+  font-size: var(--step-2);
+  color: var(--ink-3);
+}
+
+/* ------------------------------------------------------------------
+   Preferences
+   ------------------------------------------------------------------ */
+
+@media (prefers-contrast: more) {
+  :root {
+    --ink-2: #d2d0ca;
+    --ink-3: #b3b1ab;
+    --rule: #4a4946;
+    --rule-2: #807e79;
+    --bar: #b3b1ab;
+  }
+}
+
+/* On paper: dark ink on white, with every role opened out. */
+@media print {
+  :root {
+    --bg: #fff;
+    --ink: #111;
+    --ink-2: #333;
+    --ink-3: #666;
+    --rule: #ddd;
+    --rule-2: #bbb;
+    --bar: #999;
+    --live: #0b8f7f;
+    --section: 3rem;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  details::details-content {
+    block-size: auto !important;
+    content-visibility: visible !important;
+  }
+
+  header nav {
+    display: none !important;
+  }
+}

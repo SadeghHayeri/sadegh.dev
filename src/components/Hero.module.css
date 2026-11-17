@@ -1,0 +1,64 @@
+.hero {
+  padding-top: clamp(3rem, 9vh, 7rem);
+}
+
+/* Name and statement are set as one block of display type: the name in
+   ivory, the sentence that describes it a step back in grey. */
+.lockup {
+  max-width: 17em;
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+}
+
+.name {
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--ink);
+}
+
+.statement {
+  color: var(--ink-3);
+}
+
+.statement span {
+  display: block;
+  text-wrap: balance;
+}
+
+.intro {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  row-gap: 1rem;
+}
+
+.place {
+  font-size: var(--step-0);
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+
+.body {
+  max-width: var(--measure);
+}
+
+.lede {
+  font-size: var(--step-2);
+  line-height: 1.55;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin-top: 2rem;
+  font-size: var(--step-1);
+}
+
+@media (max-width: 26rem) {
+  .links {
+    column-gap: 1.25rem;
+    font-size: var(--step-0);
+  }
+}

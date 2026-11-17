@@ -1,0 +1,26 @@
+.section {
+  padding-top: var(--section);
+}
+
+.grid {
+  row-gap: 2rem;
+  align-items: start;
+}
+
+/* Section titles are set like the statement in the hero: display type,
+   one step back in grey, so the content beside them leads. */
+.title {
+  font-size: var(--step-3);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--ink-3);
+}
+
+@media (min-width: 56rem) {
+  /* The title keeps its place in the rail while its section scrolls by. */
+  .title {
+    position: sticky;
+    top: 2rem;
+  }
+}

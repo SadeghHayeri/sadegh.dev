@@ -1,0 +1,38 @@
+.prose {
+  display: grid;
+  gap: 1.25rem;
+  max-width: var(--measure);
+}
+
+.lede {
+  font-size: var(--step-2);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.toolbox {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.25rem 2rem;
+  padding-block: 1.125rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.group dt {
+  color: var(--ink-3);
+}
+
+.group dd {
+  color: var(--ink);
+}
+
+@media (min-width: 44rem) {
+  .group {
+    grid-template-columns: var(--label) minmax(0, 1fr);
+  }
+}
