@@ -13,7 +13,8 @@ export const site = {
   /** Set in large type under the name, one sentence to a line. */
   statement: ["Senior software engineer.", "Backend, infrastructure, reliability."],
   location: "Toronto, Canada",
-  email: "hayerisadegh@gmail.com",
+  /** Forwarded to my inbox by Cloudflare Email Routing. */
+  email: "hello@sadegh.dev",
   github: "https://github.com/SadeghHayeri",
   linkedin: "https://www.linkedin.com/in/sadeghhayeri",
   /**
