@@ -91,7 +91,11 @@ const jsonLd = {
   sameAs: [site.github, site.linkedin],
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${display.variable} ${text.variable}`}>
       <body>
