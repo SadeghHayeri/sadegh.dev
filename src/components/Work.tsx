@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { roles } from "@/content/site";
-import { formatDuration, formatMonth, toYears } from "@/lib/time";
+import { formatDuration, formatSpan, toYears } from "@/lib/time";
 import s from "./Work.module.css";
 
 /**
@@ -35,9 +35,7 @@ export function Work() {
     const end = role.end ? toYears(role.end) + 1 / 12 : now;
     return {
       ...role,
-      when: role.end
-        ? `${formatMonth(role.start)} – ${formatMonth(role.end)}`
-        : `Since ${formatMonth(role.start)}`,
+      when: formatSpan(role.start, role.end),
       duration: formatDuration(start, end),
       from: at(start),
       to: at(end),

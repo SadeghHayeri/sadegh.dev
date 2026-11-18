@@ -27,6 +27,13 @@ export function formatMonth(month: string): string {
   return `${MONTHS[m - 1]} ${y}`;
 }
 
+/** A role's dates → "Jun 2022 – Oct 2023", or "Since Mar 2023" while it runs. */
+export function formatSpan(start: string, end: string | null): string {
+  return end
+    ? `${formatMonth(start)} – ${formatMonth(end)}`
+    : `Since ${formatMonth(start)}`;
+}
+
 /** Length of a span in whole months → "3 yr 8 mo" */
 export function formatDuration(startYears: number, endYears: number): string {
   const months = Math.max(1, Math.round((endYears - startYears) * 12));

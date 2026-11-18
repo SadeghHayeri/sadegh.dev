@@ -1,4 +1,5 @@
 import { About } from "@/components/About";
+import { Agents } from "@/components/Agents";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -16,6 +17,7 @@ export default function Home() {
         <OpenSource />
         <About />
         <Contact />
+        <Agents />
       </main>
       <Footer />
     </>

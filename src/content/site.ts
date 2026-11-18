@@ -27,6 +27,13 @@ export const site = {
     "I'm interested in senior software engineering, backend and SRE work involving challenging production systems. If my background seems relevant to your team, I'd be happy to hear from you.",
 };
 
+/** The "For agents" section, which points to the Markdown copy of the site. */
+export const agents = {
+  /** Where the copy is served. It is written by `src/app/llms.txt/route.ts`. */
+  href: "/llms.txt",
+  note: "Everything on this page is also available as a single Markdown file, for AI agents and anyone who would rather read plain text.",
+};
+
 /** The paragraph under the headline. Plain strings, or links to a section. */
 export const intro: (string | { text: string; href: string })[] = [
   "I have 7+ years of experience across real-time dispatch, high-traffic platforms, public-cloud compute and financial transaction systems. I enjoy understanding how systems behave in production, making difficult changes safely, and improving the tools other engineers depend on.",

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Funnel_Display, Funnel_Sans } from "next/font/google";
-import { roles, site } from "@/content/site";
+import { agents, roles, site } from "@/content/site";
 import "./globals.css";
 
 const display = Funnel_Display({
@@ -25,7 +25,10 @@ export const metadata: Metadata = {
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
-  alternates: { canonical: `${site.url}/` },
+  alternates: {
+    canonical: `${site.url}/`,
+    types: { "text/markdown": `${site.url}${agents.href}` },
+  },
   openGraph: {
     type: "profile",
     url: `${site.url}/`,

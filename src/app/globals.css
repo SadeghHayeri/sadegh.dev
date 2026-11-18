@@ -265,7 +265,9 @@ svg {
     content-visibility: visible !important;
   }
 
-  header nav {
+  /* Neither the menu nor the pointer for agents is any use on paper. */
+  header nav,
+  #agents {
     display: none !important;
   }
 }

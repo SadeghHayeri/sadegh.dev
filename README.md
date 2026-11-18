@@ -26,6 +26,11 @@ toolbox are plain data there. Change the text, commit and push.
 - **Résumé link**: put a PDF in a `public/` folder and set `site.resume` to
   its path (for example `"/resume.pdf"`). A download link then appears in the
   hero and in Contact.
+- **Markdown copy**: <https://sadegh.dev/llms.txt> gives AI agents the whole
+  site as one plain Markdown file, and the "For agents" section links to it.
+  It is built from `site.ts`, so text changes reach it on their own. If you
+  add a section or a new field to the page, add it to
+  [`src/app/llms.txt/route.ts`](src/app/llms.txt/route.ts) as well.
 - **Colours and type** are tokens at the top of
   [`src/app/globals.css`](src/app/globals.css). `--live` is the one accent
   colour; it is only used for the role that is running now.
@@ -55,9 +60,10 @@ src/
   content/site.ts        all text and data
   app/
     layout.tsx           fonts, metadata, structured data
-    page.tsx             the page: Header, Hero, Work, OpenSource, About, Contact
+    page.tsx             the page: Header, Hero, Work, OpenSource, About, Contact, Agents
     globals.css          design tokens, reset, shared layout
     og.png/route.tsx     share image, rendered at build time
+    llms.txt/route.ts    the site as Markdown for AI agents, rendered at build time
     robots.ts, sitemap.ts, not-found.tsx
     icon.svg, favicon.ico, apple-icon.png
   components/
