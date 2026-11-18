@@ -70,8 +70,11 @@ src/
 - Fonts (Funnel Display, Funnel Sans) are downloaded at build time by
   `next/font` and served from the site itself. Nothing is loaded from a third
   party at runtime.
-- `favicon.ico` and `apple-icon.png` are rasterised from the mark in
-  `icon.svg`. If you change the mark, regenerate those two files.
+- `icon.svg` is a small portrait, drawn by hand in `--bg` on `--ink`.
+  `favicon.ico` and `apple-icon.png` are rasterised from it. If you change
+  the drawing, regenerate those two files. The 16px frame in `favicon.ico`
+  has its eyes and mouth redrawn on whole pixels, and `apple-icon.png` is
+  the same head on a square tile, scaled to 86%.
 - In development, open `http://localhost:3000`. The "Network" address that
   `next dev` prints also shows the page, but Next.js blocks its dev scripts
   there, so edits will not hot-reload.
