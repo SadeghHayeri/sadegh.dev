@@ -15,14 +15,14 @@
   letter-spacing: -0.03em;
   color: var(--ink);
   text-decoration: underline;
-  text-decoration-color: var(--rule-2);
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.16em;
-  transition: text-decoration-color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .email:hover {
-  text-decoration-color: currentColor;
+  color: var(--accent);
 }
 
 .links {

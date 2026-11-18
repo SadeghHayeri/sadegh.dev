@@ -9,7 +9,7 @@ export function OpenSource() {
         {projects.map((project) => (
           <li key={project.name} className={s.item}>
             <h3 className={s.name}>
-              <a className="link" href={project.href}>
+              <a className="link" href={project.href} target="_blank" rel="noopener">
                 {project.name}
               </a>
             </h3>

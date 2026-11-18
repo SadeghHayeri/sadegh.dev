@@ -10,21 +10,31 @@ export const site = {
   title: "Sadegh Hayeri, senior software engineer",
   description:
     "Sadegh Hayeri is a senior software engineer focused on backend systems, cloud infrastructure and site reliability.",
-  /** Set in large type under the name, one sentence to a line. */
+  /** Set under the name in the share image, one sentence to a line. */
   statement: ["Senior software engineer.", "Backend, infrastructure, reliability."],
+  /** Shown in the footer. */
   location: "Toronto, Canada",
+  /**
+   * The photo in the hero: the path of an image in `public/`, and the words
+   * that stand in for it when it cannot be seen. It is shown as a square, cut
+   * from the centre. To change the photo, replace that file and keep its name.
+   */
+  photo: {
+    src: "/sadegh-hayeri.jpg",
+    alt: "Sadegh Hayeri smiling beside a river, with snow-capped mountains in the distance.",
+  },
   /** Forwarded to my inbox by Cloudflare Email Routing. */
   email: "hello@sadegh.dev",
   github: "https://github.com/SadeghHayeri",
   linkedin: "https://www.linkedin.com/in/sadeghhayeri",
   /**
-   * To offer a résumé download, put the PDF in `public/` and set its path
-   * here, e.g. "/Sadegh_Hayeri_Resume.pdf". Leave as null to hide the link.
+   * The résumé download: the path of a PDF in `public/`. To update the
+   * résumé, replace that file and keep its name. Set to null to hide the link.
    */
-  resume: null as string | null,
+  resume: "/Sadegh_Hayeri_Resume.pdf" as string | null,
   /** The sentence above the email address in Contact. */
   contact:
-    "I'm interested in senior software engineering, backend and SRE work involving challenging production systems. If my background seems relevant to your team, I'd be happy to hear from you.",
+    "I love hearing from people. I'm best reached by email.",
 };
 
 /** The "For agents" section, which points to the Markdown copy of the site. */
@@ -34,7 +44,7 @@ export const agents = {
   note: "Everything on this page is also available as a single Markdown file, for AI agents and anyone who would rather read plain text.",
 };
 
-/** The paragraph under the headline. Plain strings, or links to a section. */
+/** The paragraph under the name. Plain strings, or links to a section. */
 export const intro: (string | { text: string; href: string })[] = [
   "I have 7+ years of experience across real-time dispatch, high-traffic platforms, public-cloud compute and financial transaction systems. I enjoy understanding how systems behave in production, making difficult changes safely, and improving the tools other engineers depend on.",
 ];

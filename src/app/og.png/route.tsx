@@ -13,7 +13,7 @@ export const dynamic = "force-static";
 const INK = "#ecebe6";
 const GREY = "#7c7a75";
 const IDLE = "#3b3a37";
-const LIVE = "#4fd9c6";
+const ACCENT = "#edb460";
 
 const font = (weight: 400 | 500) =>
   readFile(
@@ -40,7 +40,7 @@ export async function GET() {
       left: `${((start - first) / length) * 100}%`,
       width: `${((end - start) / length) * 100}%`,
       top: i * 30,
-      color: role.end ? IDLE : LIVE,
+      color: role.end ? IDLE : ACCENT,
     };
   });
 

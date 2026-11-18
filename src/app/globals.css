@@ -4,7 +4,8 @@
 
 :root {
   /* Colour. One ground, three inks, two rules, a grey for the timeline
-     bars, and a single signal colour for what is running right now. */
+     bars, and one accent, amber: the role that is running right now, and
+     the links. */
   --bg: #000;
   --ink: #ecebe6;
   --ink-2: #a9a7a1;
@@ -12,7 +13,7 @@
   --rule: #1d1d1b;
   --rule-2: #3b3a37;
   --bar: #6b6964;
-  --live: #4fd9c6;
+  --accent: #edb460;
 
   /* Type */
   --font-display: var(--font-funnel-display), ui-sans-serif, system-ui,
@@ -123,7 +124,7 @@ svg {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--live) 32%, transparent);
+  background: color-mix(in srgb, var(--accent) 32%, transparent);
   color: var(--ink);
 }
 
@@ -145,8 +146,8 @@ svg {
 }
 
 /* The page's one structural idea: a narrow rail on the left, content on
-   the right. Every section, the hero intro and each row of the work
-   timeline share these columns, so their left edges line up. */
+   the right. Every section and each row of the work timeline share these
+   columns, so their left edges line up. */
 .split {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -161,18 +162,26 @@ svg {
   }
 }
 
-/* Text links: ivory, with a quiet underline that firms up on hover. */
+/* Text links: ivory on an amber underline. On hover the text takes the
+   amber as well. */
 .link {
   color: var(--ink);
   text-decoration: underline;
-  text-decoration-color: var(--rule-2);
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.3em;
-  transition: text-decoration-color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .link:hover {
-  text-decoration-color: currentColor;
+  color: var(--accent);
+}
+
+/* The mark is a portrait, pen on paper. On the dark page the paper is the
+   light ink and the pen is the ground. */
+.mark {
+  --paper: var(--ink);
+  --pen: var(--bg);
 }
 
 .skip {
@@ -252,12 +261,18 @@ svg {
     --rule: #ddd;
     --rule-2: #bbb;
     --bar: #999;
-    --live: #0b8f7f;
+    --accent: #9a6a17;
     --section: 3rem;
   }
 
   html {
     color-scheme: light;
+  }
+
+  /* The portrait keeps a dark pen, and the page itself is its paper. */
+  .mark {
+    --paper: var(--bg);
+    --pen: var(--ink);
   }
 
   details::details-content {

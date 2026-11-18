@@ -7,8 +7,8 @@
   align-items: start;
 }
 
-/* Section titles are set like the statement in the hero: display type,
-   one step back in grey, so the content beside them leads. */
+/* Section titles are set in display type, one step back in grey, so the
+   content beside them leads. */
 .title {
   font-size: var(--step-3);
   font-weight: 400;

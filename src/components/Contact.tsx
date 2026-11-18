@@ -11,12 +11,12 @@ export function Contact() {
       </a>
       <ul className={s.links}>
         <li>
-          <a className="link" href={site.github} rel="me">
+          <a className="link" href={site.github} target="_blank" rel="me noopener">
             GitHub
           </a>
         </li>
         <li>
-          <a className="link" href={site.linkedin} rel="me">
+          <a className="link" href={site.linkedin} target="_blank" rel="me noopener">
             LinkedIn
           </a>
         </li>

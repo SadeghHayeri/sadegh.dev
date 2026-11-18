@@ -17,23 +17,30 @@ Requires Node 20.9 or newer.
 ## Editing the content
 
 Everything the site says is in one file: [`src/content/site.ts`](src/content/site.ts).
-Name, headline, intro, roles, open-source projects, the About text and the
-toolbox are plain data there. Change the text, commit and push.
+Name, intro, roles, open-source projects, the About text and the toolbox are
+plain data there. Change the text, commit and push.
 
 - **Roles** are listed most recent first. `start` and `end` are `"YYYY-MM"`;
   set `end: null` for the current role. The timeline positions every bar from
   these dates.
-- **Résumé link**: put a PDF in a `public/` folder and set `site.resume` to
-  its path (for example `"/resume.pdf"`). A download link then appears in the
-  hero and in Contact.
+- **Photo**: the picture in the hero is `public/sadegh-hayeri.jpg`, and
+  `site.photo` holds its path and its alt text. It is shown as a square, cut
+  from the centre, at up to 320px wide, so a file 640px wide stays sharp. To
+  change it, replace the file and keep its name, and rewrite the alt text if
+  the picture shows something else.
+- **Résumé link**: the PDF is `public/Sadegh_Hayeri_Resume.pdf`, and
+  `site.resume` holds its path. A download link to it appears in the hero and
+  in Contact. To update the résumé, replace the file and keep its name. Set
+  `site.resume` to `null` to hide the link.
 - **Markdown copy**: <https://sadegh.dev/llms.txt> gives AI agents the whole
   site as one plain Markdown file, and the "For agents" section links to it.
   It is built from `site.ts`, so text changes reach it on their own. If you
   add a section or a new field to the page, add it to
   [`src/app/llms.txt/route.ts`](src/app/llms.txt/route.ts) as well.
 - **Colours and type** are tokens at the top of
-  [`src/app/globals.css`](src/app/globals.css). `--live` is the one accent
-  colour; it is only used for the role that is running now.
+  [`src/app/globals.css`](src/app/globals.css). `--accent` (amber) is the one
+  accent colour. It is only used for the role that is running now and for
+  links, under their text and on the text itself when hovered.
 
 ## Deploying
 
@@ -76,11 +83,14 @@ src/
 - Fonts (Funnel Display, Funnel Sans) are downloaded at build time by
   `next/font` and served from the site itself. Nothing is loaded from a third
   party at runtime.
-- `icon.svg` is a small portrait, drawn by hand in `--bg` on `--ink`.
-  `favicon.ico` and `apple-icon.png` are rasterised from it. If you change
-  the drawing, regenerate those two files. The 16px frame in `favicon.ico`
-  has its eyes and mouth redrawn on whole pixels, and `apple-icon.png` is
-  the same head on a square tile, scaled to 86%.
+- The mark is a small portrait, drawn by hand in `--bg` on `--ink`. Its
+  paths live in `src/components/Mark.tsx`, which the header and the
+  not-found page show, and `icon.svg` is a copy of them with the colours
+  written out. `favicon.ico` and `apple-icon.png` are rasterised from
+  `icon.svg`. If you change the drawing, change both and regenerate those
+  two files. The 16px frame in `favicon.ico` has its eyes and mouth redrawn
+  on whole pixels, and `apple-icon.png` is the same head on a square tile,
+  scaled to 86%.
 - In development, open `http://localhost:3000`. The "Network" address that
   `next dev` prints also shows the page, but Next.js blocks its dev scripts
   there, so edits will not hot-reload.

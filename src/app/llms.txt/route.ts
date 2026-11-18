@@ -21,7 +21,6 @@ export function GET() {
     // Hero
     `# ${site.name}`,
     `> ${site.description}`,
-    site.statement.join(" "),
     intro
       .map((part) =>
         typeof part === "string"
@@ -29,6 +28,7 @@ export function GET() {
           : `[${part.text}](${absolute(part.href)})`,
       )
       .join(""),
+    `![${site.photo.alt}](${absolute(site.photo.src)})`,
     list([`Location: ${site.location}`, `Website: ${home}`]),
 
     "## Work",

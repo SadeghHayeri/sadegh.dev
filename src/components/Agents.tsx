@@ -12,6 +12,7 @@ export function Agents() {
       <a
         className={`link ${s.file}`}
         href={agents.href}
+        target="_blank"
         rel="alternate"
         type="text/markdown"
       >

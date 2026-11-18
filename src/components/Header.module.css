@@ -12,10 +12,10 @@
 .home {
   display: grid;
   place-items: center;
-  /* 44px target around a 24px mark, without shifting the mark off the grid */
+  /* 44px target around a 32px mark, without shifting the mark off the grid */
   width: 2.75rem;
   height: 2.75rem;
-  margin: -0.625rem;
+  margin: -0.375rem;
 }
 
 .nav {
@@ -35,7 +35,7 @@
 }
 
 .item:hover {
-  color: var(--ink);
+  color: var(--accent);
 }
 
 /* The smallest phones: keep all four links on one line. */

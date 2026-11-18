@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <main id="main" className="wrap missing">
-      <Mark size={28} />
+      <Mark size={48} />
       <h1>This page doesn&apos;t exist.</h1>
       <p>The address may be mistyped, or the page may have moved.</p>
       <Link className="link" href="/">

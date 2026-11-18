@@ -161,7 +161,7 @@
   height: 0.5rem;
 }
 
-/* Past roles in grey; the one running now in the signal colour. */
+/* Past roles in grey; the one running now in the accent. */
 .bar {
   position: absolute;
   left: calc(var(--from) * 100%);
@@ -174,7 +174,7 @@
 }
 
 .row[data-live] .bar {
-  background: var(--live);
+  background: var(--accent);
 }
 
 .row:not([data-live]):is(:hover, [open]) .bar {
